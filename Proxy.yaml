@@ -395,8 +395,24 @@ proxies:
 #   tls: true # https
   skip-cert-verify: true
   
-- {name: 🇺🇸7, server: 173.245.59.165, port: 2095, type: vmess, uuid: f25a0058-37be-4849-90b7-806d7cc8bf38, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /@hkaa0, headers: {Host: sg.wyhkaa0.tk}}, udp: true}
-
+- name: "🇺🇸7"
+  type: hysteria2
+  server: 64.110.25.11
+  port: 33337
+  # ports: 10000-20000/443
+  #  up和down均不写或为0则使用BBR流控
+  # up: "30 Mbps" # 若不写单位，默认为 Mbps
+  # down: "200 Mbps" # 若不写单位，默认为 Mbps
+  password: dongtaiwang.com
+  # obfs: salamander # 默认为空，如果填写则开启obfs，目前仅支持salamander
+  # obfs-password: yourpassword
+  sni: www.bing.com
+  # skip-cert-verify: false
+  # fingerprint: xxxx
+  # alpn:
+  #   - h3
+  # ca: "./my.ca"
+  # ca-str: "xyz"
 
   
   
