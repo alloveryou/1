@@ -358,7 +358,26 @@ proxies:
 - {name: 🇺🇸5, server: 162.159.50.55, port: 8880, type: vmess, uuid: d7ca2363-81c2-43a0-f141-352815da3ac3, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /qwer, headers: {Host: uxx.vtcss.top}}, udp: true}
 
 
-- { name: 🇺🇸6, type: trojan, server: aa004.zhuan99.men, port: 10004, password: b4a73e54-ce68-46c1-8d79-9e9eb70714c2, udp: true, sni: zhu.99ton.men }
+- name: "🇺🇸6"
+  server: nat.rushshop.club
+  port: 24147
+  type: tuic
+  token: TOKEN
+  uuid: dacd2765-2332-4817-83c4-273df586c8c5
+  password: dacd2765-2332-4817-83c4-273df586c8c5
+  # ip: 127.0.0.1
+  # heartbeat-interval: 10000
+  alpn: [h3]
+  disable-sni: true
+  reduce-rtt: true
+  request-timeout: 8000
+  udp-relay-mode: native
+  congestion-controller: bbr
+  # max-udp-relay-packet-size: 1500
+  # fast-open: true
+  # skip-cert-verify: true
+  # max-open-streams: 20
+  # sni: example.com
 
 
 
