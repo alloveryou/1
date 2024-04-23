@@ -462,19 +462,19 @@ proxies:
   flow: xtls-rprx-vision
   packet-encoding: none
   tls: true
-  servername: .
+  servername:.
   alpn:
-  - h2
+    - h2
 #  - http/1.1
-#  fingerprint: 
+  fingerprint: 
   client-fingerprint: chrome
   skip-cert-verify: true
   reality-opts:
     public-key: S1K8ADlCRKhDMeImPVIILtXba97XYBwyodPVGds453U
-#    short-id: 
- # network: tcp
-#  smux:
- #   enabled: false
+   short-id: 
+  # network: tcp  
+  smux:
+    enabled: false
 
 # 其他协议如 Socks5、HTTP、Snell 示例如下
 
