@@ -457,10 +457,10 @@ proxies:
   server: reality.a.nekoe.eu.org
   port: 6000
   uuid: https://t.me/nekoemtp
-  network: tcp
   udp: true
   flow: xtls-rprx-vision
   packet-encoding: none
+  network: tcp
   tls: true
   servername:.
   alpn:
@@ -473,8 +473,8 @@ proxies:
     public-key: S1K8ADlCRKhDMeImPVIILtXba97XYBwyodPVGds453U
    short-id: 
   # network: tcp  
-  smux:
-    enabled: false
+  #smux:
+  #  enabled: false
 
 # 其他协议如 Socks5、HTTP、Snell 示例如下
 
