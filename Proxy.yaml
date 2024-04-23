@@ -451,28 +451,15 @@ proxies:
 
 
 - name: "🇺🇸9"
-  type: vless
-  server: server
-  port: 443
+  type: trojan
+  server: oss-cn-shanghai.westdatacloud.top
+  port: 20048
+  password: 626351FA-3CA6-8118-FADF-CCDBCD620871
   udp: true
-  uuid: uuid
-  flow: xtls-rprx-vision
-  packet-encoding: xudp
-
-  tls: true
-  servername: example.com
-  alpn:
-  - h2
-  - http/1.1
-  fingerprint: xxxx
-  client-fingerprint: chrome
+  sni: oss-cn-shanghai.westdatacloud.top
+#   tls: true # https
   skip-cert-verify: true
-  reality-opts:
-    public-key: xxxx
-    short-id: xxxx
-  network: tcp
-  smux:
-    enabled: false
+
 
 # 其他协议如 Socks5、HTTP、Snell 示例如下
 
