@@ -467,11 +467,11 @@ proxies:
 #    - h2
 #  - http/1.1
   fingerprint: chrome
-  client-fingerprint: chrome
+#  client-fingerprint: chrome
   skip-cert-verify: true
   reality-opts:
     public-key: S1K8ADlCRKhDMeImPVIILtXba97XYBwyodPVGds453U
-   short-id: 
+#   short-id: 
   # network: tcp  
   #smux:
   #  enabled: false
