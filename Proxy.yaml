@@ -449,8 +449,32 @@ proxies:
   udp: true
   reserved: "fI8p"
 
-- { name: 🇺🇸9, type: vmess, server: us-global-1.node.renovpn.cloud, port: 80, uuid: 883b858f-6d51-4f72-bad2-5911e1966e00, alterId: 0, cipher: auto, udp: true, network: ws, ws-opts: { headers: { Host: us-global-1.node.renovpn.cloud } }, ws-headers: { Host: us-global-1.node.renovpn.cloud } }  
-  
+
+- name: "🇺🇸9"
+  type: vless
+  #server: 2606:4700:3037::6815:29ea
+  #server: 172.67.180.22
+  server: reality.a.nekoe.eu.org
+  port: 6000
+  uuid: https://t.me/nekoemtp
+  network: tcp
+  udp: true
+  flow: xtls-rprx-vision
+  packet-encoding: none
+  tls: true
+  servername: .
+  alpn:
+  - h2
+#  - http/1.1
+#  fingerprint: 
+  client-fingerprint: chrome
+  skip-cert-verify: true
+  reality-opts:
+    public-key: S1K8ADlCRKhDMeImPVIILtXba97XYBwyodPVGds453U
+#    short-id: 
+ # network: tcp
+#  smux:
+ #   enabled: false
 
 # 其他协议如 Socks5、HTTP、Snell 示例如下
 
