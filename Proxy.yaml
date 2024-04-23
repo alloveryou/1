@@ -462,11 +462,11 @@ proxies:
   packet-encoding: none
   network: tcp
   tls: true
-  servername:.
-  alpn:
-    - h2
+  servername: www.bing.com
+#  alpn:
+#    - h2
 #  - http/1.1
-  fingerprint: 
+  fingerprint: chrome
   client-fingerprint: chrome
   skip-cert-verify: true
   reality-opts:
