@@ -406,13 +406,17 @@ proxies:
 
 - name: "🇯🇵2"
   type: trojan
-  server: oss-cn-shanghai.westdatacloud.top
-  port: 20048
+  server: 188.114.97.145
+  port: 2095
   password: 626351FA-3CA6-8118-FADF-CCDBCD620871
-  udp: true
-  sni: oss-cn-shanghai.westdatacloud.top
-#   tls: true # https
+  udp: false
+  tls: false
   skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: "/?ed=2560"
+    headers:
+      Host: f2.alloveryou1314.workers.dev
   
 - name: "🇺🇸7"
   type: hysteria2
