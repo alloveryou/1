@@ -1,0 +1,676 @@
+port: 7890
+allow-lan: true
+mode: rule
+log-level: info
+unified-delay: true
+global-client-fingerprint: chrome
+dns:
+  enable: true
+  listen: :53
+  ipv6: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  default-nameserver: 
+   # - 114.114.114.114
+    - 223.5.5.5
+    - 223.6.6.6
+  #  - 208.67.222.222:5353
+    - 2606:4700:4700::1111
+  nameserver:
+   # - 114.114.114.114
+    - 223.5.5.5
+    - 223.6.6.6
+  fallback:
+   - https://[2606:4700:4700::1111]/dns-query
+   - https://[2606:4700:4700::1001]/dns-query
+   # - tls://dns.google#Proxy
+   # - tls://1.1.1.1#Proxy
+  proxy-server-nameserver:
+    - tls://1.1.1.1
+    - https://[2606:4700:4700::1111]/dns-query
+    
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    ipcidr:
+      - 240.0.0.0/4
+
+
+# 代理节点
+proxies:
+# 更多协议配置示例：https://github.com/Dreamacro/clash/blob/master/README.md
+
+# Shadowsocks 支持的加密方式:
+#   aes-128-gcm aes-192-gcm aes-256-gcm
+#   aes-128-cfb aes-192-cfb aes-256-cfb
+#   aes-128-ctr aes-192-ctr aes-256-ctr
+#   rc4-md5 chacha20-ietf xchacha20
+#   chacha20-ietf-poly1305 xchacha20-ietf-poly1305
+
+# Shadowsocks
+- name: "🇰🇷"
+  type: ss
+  server: ss.dateno1.com
+  port: 8388
+  cipher: chacha20-ietf-poly1305
+  password: "ss.dateno1.com"
+  # udp: true
+
+- name: "🇺🇸"
+  type: ss
+  server: ss.dateno1.com
+  port: 443
+  cipher: chacha20-ietf-poly1305
+  password: "ss.dateno1.com"
+  plugin: v2ray-plugin
+  plugin-opts:
+    mode: websocket
+    tls: true # wss
+    skip-cert-verify: true
+    host: ss.dateno1.com
+    path: "/"
+    mux: true
+    # headers:
+    # custom: value
+
+# Shadowsocks + simple-obfs
+#- name: "2"
+#  type: ss
+#  server: 1.2.4.8
+#  port: 443
+#  cipher: chacha20-ietf-poly1305
+#  password: "password"
+#  plugin: obfs
+#  plugin-opts:
+#    mode: tls # or http
+    # host: bing.com
+
+# Shadowsocks + v2ray-plugin
+#- name: "3"
+#  type: ss
+#  server: 1.2.4.8
+#  port: 443
+#  cipher: chacha20-ietf-poly1305
+#  password: "password"
+#  plugin: v2ray-plugin
+#  plugin-opts:
+#    mode: websocket # no QUIC now
+    # tls: true # wss
+    # skip-cert-verify: true
+    # host: bing.com
+    # path: "/"
+    # mux: true
+    # headers:
+    #   custom: value
+
+# VMess
+#- name: "4"
+#  type: vmess
+#  server: v2ray.cool
+#  port: 443
+#  uuid: a3482e88-686a-4a58-8126-99c9df64b7bf
+#  alterId: 64
+#  cipher: auto
+  # udp: true
+  # tls: true
+  # skip-cert-verify: true
+  # network: ws
+  # ws-path: /path
+  # ws-headers:
+  #   Host: v2ray.com
+
+
+#- name: "🇸🇬"                         # 可以自定义节点名称
+ # type: vmess
+ # server: visa.com                         # 解析的 IP / 域名或优选 IP / 域名
+#  port: 443                                    # 自定义端口
+ # uuid: 827d1d3b-21d0-415d-b309-14c443a16bb0      # 自定义 UUID
+ # alterId: 0
+ # cipher: auto
+#  udp: true
+ # tls: true
+ # network: ws
+ # servername: oracle.3kmfi6hp.us.kg                         # SNI 域名，与下面 host 一致
+ # ws-opts:
+  #  path: "/1"                              # 自定义 path 路径
+ #   headers:
+  #    Host: oracle.3kmfi6hp.us.kg
+
+- { name: '🇸🇬', type: vless, server: sg6.youxuan.wiki, port: 33155, uuid: 36f4cc8b-fe82-4cbf-bc18-411852f3b4f8, alterId: 0, cipher: auto, udp: true, tls: true, servername: www.microsoft.com, reality-opts: { public-key: OstL8i2vDibAu1T4j1I9UnySmrG-wloKWBVC-MhPUDw, short-id: '42241206' }, client-fingerprint: edge }
+
+
+
+- name: "🇺🇸1"
+  type: wireguard
+  #server: 188.114.96.188
+  #server: 188.114.98.21
+  #server: 2001:67c:2960:6464::bc72:6215
+  #server: 2602:fc59:b0:64::bc72:62b5
+  server: 2602:fc59:11:64::bc72:62b5
+  #server: 2606:4700:d1:0:f4:a2cc:d29a:1b74
+  #server: 162.159.193.77
+  #server: 2606:4700:d1::a29f:c001
+ # server: 146.56.149.205
+  port:  3854 #864 #1843 #1002 #1701 #878
+  ip: 172.16.0.2
+  ipv6: 2606:4700:110:8498:ef50:da7d:a06f:d096
+  public-key: bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=
+  #    pre-shared-key: 31aIhAPwktDGpH4JDhA8GNvjFXEf/a6+UaQRyOAiyfM=
+  private-key: iKV47Laq5G53ZEwj2ooMgqylL1pSO8fNqvO7PnCbG2Q=
+  udp: true
+  reserved: "fI8p"
+  
+#- name: "🇺🇸2"
+ # type: vless
+  #server: 2606:4700:3037::6815:29ea
+  #server: 172.67.180.22
+  #server: 2606:4700:3037::6815:29ea
+ # server: 47.74.157.194
+ # server: 172.67.146.209
+#  port: 443
+ # uuid: dff7070c-2753-494d-af5a-229ec0fb288a
+ # alterId: 64
+ # cipher: auto
+ # udp: false
+ # tls: true
+  # skip-cert-verify: false
+ # network: ws
+ # ws-opts:
+  #     path: "/?ed=2560"
+   #   headers:
+  #       Host: f2.qoooop.workers.dev
+         
+- name: "🇺🇸2"
+  type: trojan
+  #server: usa.visa.com
+  #server: 2606:4700:0:5e08:9b33:360b:6020:2dba
+  server: 2606:4700:0:daff:8d19:e133:9e20:8f2a
+  port: 443
+  password: 23ecac10-bfea-41bd-bf94-78a57e9797d7
+  udp: false
+  sni: f5.alloveryou1314.dpdns.org
+  network: ws
+  ws-opts:
+    path: "/?ed=2560"
+    headers:
+      Host: f5.alloveryou1314.dpdns.org     
+  
+
+#- name: "🇺🇸3"                               
+  #type: trojan
+  #server: 58.254.186.222
+  #server: 2606:4700:10:9ea0:8e3b:59bb:c8a7:9fed
+  #port: 33505
+  #password: 77ba698c-c96b-40a7-b354-9da4fb098c4
+#  udp: true
+ # tls: true
+#  skip-cert-verify: true
+ # sni: q08m.vgraxiw73s.hasyaf.cn
+  
+# - {name: 🇺🇸3, server: 58.254.186.222, port: 33505, type: trojan, password: 77ba698c-c96b-40a7-b354-9da4fb0982c4, sni: q08m.vgraxiw73s.hasyaf.cn}
+
+-
+    name: '🇺🇸3'
+    type: ssr
+    server: 88gg.mt.mt5888.top
+    port: 44008
+    cipher: none
+    password: mantouyun888
+    protocol: auth_chain_a
+    protocol-param: '8198:CsJt8BBrKFOSrjv2'
+    obfs: plain
+    obfs-param: cbcdc8198.microsoft.com
+ 
+#- { name: 🇺🇸4, type: trojan, server: aa003.zhuan99.men, port: 10003, password: b4a73e54-ce68-46c1-8d79-9e9eb70714c2, udp: true, sni: zhu.99ton.men }
+- name: "🇺🇸4"
+  type: trojan
+  server: 2606:4700:a9:5b40:6955:9475:377e:2a43
+  #server: 2606:4700:10:9ea0:8e3b:59bb:c8a7:9fed
+  port: 443
+  password: c619d6e5-7af5-4fa5-bff5-fec6013b66e8
+#  udp: true
+  tls: true
+#  skip-cert-verify: true
+  sni: f3.qoooop.cloudns.ch
+  client-fingerprint: chrome
+  #fingerprint: none
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: f3.qoooop.cloudns.ch
+#    max-early-data:
+  #  early-data-header-name:
+ #   v2ray-http-upgrade: false
+ #   v2ray-http-upgrade-fast-open: false
+
+
+
+- name: "🇷🇺"
+  type: ss
+  server: ss.a.nekoe.eu.org
+  port: 6000
+  cipher: aes-256-cfb
+  password: "https://t.me/nekoemtp"
+  udp: true
+
+
+-  name: "🇭🇰"
+   type: vless
+   #server: 2606:4700:3037::6815:29ea
+   #server: 172.67.180.22
+   #server: 172.67.71.237
+   server: 162.159.138.233
+   port: 2095
+   uuid: f188822f-93e6-4895-8bde-f5294b4fe01f
+   alterId: 64
+   cipher: auto
+   udp: false
+   tls: false
+  # skip-cert-verify: true
+   network: ws
+   ws-opts:
+        path: " /?ed=2048 "
+        headers:
+          Host: f1.alloveryou1314.workers.dev
+
+
+- name: "🇺🇸L"
+  type: wireguard
+  #server: 188.114.99.221
+  #server: 2001:67c:2960:6464::bc72:63dd
+  server: 2001:67c:2960:6464::a29f:c0a9
+  #server: 162.159.192.194
+  #server: 2001:67c:2b0:db32:0:1:a29f:c103
+  #server: 2606:4700:d1:0:407a:a9cd:1e3b:8d65
+  port: 7559 #2506 #3581 #7152 #1387 #1002 #1701 #878
+  ip: 172.16.0.2
+  ipv6: 2606:4700:110:89d9:f82b:3868:9ef9:dc99
+  public-key: bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=
+  #    pre-shared-key: 31aIhAPwktDGpH4JDhA8GNvjFXEf/a6+UaQRyOAiyfM=
+  private-key: uNoywk60TsqAwyH83RqkXtsGwgGDQVVKWSMTfgDhoHg=
+  udp: true
+ # reserved: "82,199,77"
+
+
+- name: "🇯🇵"
+  type: vless
+  #server: 2606:4700:3037::6815:29ea
+  #server: 172.67.180.22
+  #server: 104.20.157.23
+  #server: www.visa.co.jp
+  #server: 172.64.229.214
+  server: 162.159.58.192
+  port: 80
+  uuid: abe9f6b9-0512-4745-bd24-0ecbcd37d8ce
+  alterId: 64
+  cipher: auto
+  udp: false
+  tls: true
+  # skip-cert-verify: true
+  network: ws
+  ws-opts:
+       path: " /?ed=2048 "
+       headers:
+         Host: f3.qoooop.workers.dev
+  
+# - {name: 🇺🇸5, server: 162.159.50.55, port: 8880, type: vmess, uuid: d7ca2363-81c2-43a0-f141-352815da3ac3, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /qwer, headers: {Host: uxx.vtcss.top}}, udp: true}
+
+- name: "🇺🇸5"
+  type: vless
+  #server: 2606:4700:3037::6815:29ea
+  #server: 172.67.180.22
+  #server: 172.67.73.174
+  #server: 172.67.228.54
+  #server:  198.41.209.89
+  server: 2a06:98c1:3104:983c:6d5a:a36b:2544:6f95
+ # server: 47.245.80.39
+  port: 2052
+  uuid: c1c20203-e3da-4a6a-a628-fc003a9b2775
+  alterId: 64
+  cipher: auto
+  udp: false
+  tls: false
+  # skip-cert-verify: true
+  network: ws
+  ws-opts:
+       path: " /?ed=2048 "
+       headers:
+         Host: f4.qoooop.workers.dev
+
+- name: "🇺🇸6"
+  server: nat.rushshop.club
+  port: 24147
+  type: tuic
+  token: TOKEN
+  uuid: dacd2765-2332-4817-83c4-273df586c8c5
+  password: dacd2765-2332-4817-83c4-273df586c8c5
+  # ip: 127.0.0.1
+  # heartbeat-interval: 10000
+  alpn: [h3]
+  disable-sni: true
+  reduce-rtt: true
+  request-timeout: 8000
+  udp-relay-mode: native
+  congestion-controller: bbr
+  # max-udp-relay-packet-size: 1500
+  # fast-open: true
+  # skip-cert-verify: true
+  # max-open-streams: 20
+  # sni: example.com
+
+# - { name: 🇰🇷T, type: vless, server: 2606:4700:3037::6815:29ea, port: 80, uuid: abe9f6b9-0512-4745-bd24-0ecbcd37d8ce, alterId: 0, cipher: auto, udp: false, network: ws, ws-opts: { path: /?ed=2048, headers: { Host: f3.qoooop.workers.dev } , ws-headers: { Host: f3.qoooop.workers.dev } }  
+
+
+- name: "🇰🇷T"
+  type: vless
+  #server: 172.67.241.53
+ # server: 2a06:98c1:3101:0:96:83bf:1dfc:da7
+  server: 2a06:98c1:3104:983c:6d5a:a36b:2544:6f95
+  #server: 2606:4700:10:9ea0:8e3b:59bb:c8a7:9fed
+  #server: 2606:4700:f4:6a:6f42:daf:3a4b:8869
+  port: 2095
+  uuid: f188822f-93e6-4895-8bde-f5294b4fe01f
+  network: ws
+  tls: false
+  udp: false
+  sni: f1.alloveryou1314.workers.dev
+  client-fingerprint: chrome
+  ws-opts:
+    path: "/?ed=2048"
+    headers:
+      host: f1.alloveryou1314.workers.dev
+
+
+#- name: "🇯🇵2"
+ # type: ss
+ # server: zf.ltsh.top
+ # port: 20281
+ # cipher: chacha20-ietf-poly1305
+ # password: "8bfbb9ed-908f-44af-9a18-bf3f18e6dadc"
+ # udp: true
+
+-
+    name: '🇯🇵2'
+    type: ssr
+    server: 88gg.mt.mt5888.top
+    port: 44007
+    cipher: none
+    password: mantouyun888
+    protocol: auth_chain_a
+    protocol-param: '8198:CsJt8BBrKFOSrjv2'
+    obfs: plain
+    obfs-param: cbcdc8198.microsoft.com  
+  
+  
+- name: "🇺🇸7"
+  type: hysteria2
+  server: us3.fastsocks.xyz
+  port:  57000
+  # ports: 10000-20000/443
+  #  up和down均不写或为0则使用BBR流控
+  up: "30 Mbps" # 若不写单位，默认为 Mbps
+  down: "300 Mbps" # 若不写单位，默认为 Mbps
+  password: 8bfbb9ed-908f-44af-9a18-bf3f18e6dadc
+  # obfs: salamander # 默认为空，如果填写则开启obfs，目前仅支持salamander
+  # obfs-password: yourpassword
+  sni: hk5.fastsocks.xyz
+  skip-cert-verify: true
+  # fingerprint: xxxx
+  alpn:
+     - h3
+  # ca: "./my.ca"
+  # ca-str: "xyz"
+#  - { name: 美国02, server: us2.fastsocks.xyz, port: 57000, udp: true, skip-cert-verify: true, sni: hk5.fastsocks.xyz, type: hysteria2, password: 8bfbb9ed-908f-44af-9a18-bf3f18e6dadc }
+  
+- name: "TW"
+  type: trojan
+  server: www.visa.com.tw
+  port: 2053
+  password: 23ecac10-bfea-41bd-bf94-78a57e9797d7
+  udp: false
+  sni: f5.alloveryou1314.dpdns.org
+  network: ws
+  ws-opts:
+    path: "/?ed=2560"
+    headers:
+      Host: f5.alloveryou1314.dpdns.org
+  
+#  - { name: 'HK 01', type: vless, server: 103.17.99.54, port: 19280, uuid: 89b90001-4206-4871-a99d-1744d48f215b, alterId: 0, cipher: auto, udp: true, flow: xtls-rprx-vision, tls: true, servername: cdn-dynmedia-1.microsoft.com, reality-opts: { public-key: F5_aTQFA2QRCig3L-qT0Qth76JdewSHK5MgEt_p8Dlo, short-id: a8bd783f }, client-fingerprint: ios }
+# - { name: 🇺🇸9, type: vmess, server: us-global-1.node.renovpn.cloud, port: 80, uuid: 883b858f-6d51-4f72-bad2-5911e1966e00, alterId: 0, cipher: auto, udp: true, network: ws, ws-opts: { headers: { Host: us-global-1.node.renovpn.cloud } }, ws-headers: { Host: us-global-1.node.renovpn.cloud } }  
+ 
+- name: "🇺🇸9"
+  type: vless
+  #server: 2606:4700:3037::6815:29ea
+  #server: 172.67.180.22
+  server: reality.a.nekoe.eu.org
+  port: 6000
+  uuid: https://t.me/nekoemtp#warp
+  network: tcp
+  udp: true
+  flow: xtls-rprx-vision
+  packet-encoding: none
+  tls: true
+  servername: .
+  alpn:
+  - h2
+#  - http/1.1
+#  fingerprint: 
+  client-fingerprint: chrome
+  skip-cert-verify: true
+  reality-opts:
+    public-key: S1K8ADlCRKhDMeImPVIILtXba97XYBwyodPVGds453U
+#    short-id: 
+ # network: tcp
+#  smux:
+ #   enabled: false
+
+ 
+
+# 其他协议如 Socks5、HTTP、Snell 示例如下
+
+# socks5
+# - name: "socks"
+#   type: socks5
+#   server: server
+#   port: 443
+#   # username: username
+#   # password: password
+#   # tls: true
+#   # skip-cert-verify: true
+#   # udp: true
+
+# http
+# - name: "http"
+#   type: http
+#   server: server
+#   port: 443
+#   # username: username
+#   # password: password
+#   # tls: true # https
+#   # skip-cert-verify: true
+
+# snell
+# - name: "snell"
+#   type: snell
+#   server: server
+#   port: 44046
+#   psk: yourpsk
+#   # obfs-opts:
+#     # mode: http # or tls
+#     # host: bing.com
+
+# 代理组策略
+proxy-groups:
+
+# url-test 通过指定的 URL 测试并选择延迟最低的节点
+#- name: "UrlTest"
+#  type: url-test
+#  proxies:
+#    - "🇰🇷"
+#    - "🇺🇸"
+#    - "🇸🇬"
+#  url: 'http://www.gstatic.com/generate_204'
+#  interval: 300
+
+# fallback 通过指定的 URL 测试并选择可用的节点，当 1 故障不可用时自动切换到 2 以此类推
+# - name: "Fallback"
+#   type: fallback
+#   proxies:
+#     - "1"
+#     - "2"
+#     - "3"
+#     - "4"
+#   url: 'http://www.gstatic.com/generate_204'
+#   interval: 300
+
+# load-balance: 负载均衡
+# - name: "LoadBalance"
+#   type: load-balance
+#   proxies:
+#     - "1"
+#     - "2"
+#     - "3"
+#     - "4"
+#   url: 'http://www.gstatic.com/generate_204'
+#   interval: 300
+
+# 代理节点选择
+- name: "Proxy"
+  type: select
+  proxies:
+#    - "UrlTest"
+    - "🇰🇷"
+    - "🇺🇸"
+    - "🇸🇬"
+    - "🇺🇸1"
+    - "🇺🇸2"
+    - "🇺🇸3"
+    - "🇺🇸4"
+    - "🇷🇺"
+    - "🇭🇰"
+    - "🇺🇸L"
+    - "🇯🇵"
+    - "🇺🇸5"
+    - "🇺🇸6"
+    - "🇰🇷T"
+    - "🇯🇵2"
+    - "🇺🇸7"
+    - "TW"
+    - "🇺🇸9"
+# 白名单模式 PROXY，黑名单模式 DIRECT
+
+# 规则
+rule-providers:
+  reject:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
+    path: ./ruleset/reject.yaml
+    interval: 86400
+
+  icloud:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt"
+    path: ./ruleset/icloud.yaml
+    interval: 86400
+
+  apple:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt"
+    path: ./ruleset/apple.yaml
+    interval: 86400
+
+  google:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt"
+    path: ./ruleset/google.yaml
+    interval: 86400
+
+  proxy:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt"
+    path: ./ruleset/proxy.yaml
+    interval: 86400
+
+  direct:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt"
+    path: ./ruleset/direct.yaml
+    interval: 86400
+
+  private:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
+    path: ./ruleset/private.yaml
+    interval: 86400
+
+  gfw:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt"
+    path: ./ruleset/gfw.yaml
+    interval: 86400
+
+  tld-not-cn:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/tld-not-cn.txt"
+    path: ./ruleset/tld-not-cn.yaml
+    interval: 86400
+
+  telegramcidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt"
+    path: ./ruleset/telegramcidr.yaml
+    interval: 86400
+
+  cncidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt"
+    path: ./ruleset/cncidr.yaml
+    interval: 86400
+
+  lancidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt"
+    path: ./ruleset/lancidr.yaml
+    interval: 86400
+
+  applications:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt"
+    path: ./ruleset/applications.yaml
+    interval: 86400
+
+rules:
+  - DOMAIN,short.weixin.qq.com,Proxy
+  - DOMAIN,dns.weixin.qq.com.cn,Proxy
+  - DOMAIN,szshort.weixin.qq.com,Proxy
+  - DOMAIN,dns.weixin.qq.com,Proxy
+  - RULE-SET,applications,DIRECT
+  - DOMAIN,clash.razord.top,DIRECT
+  - DOMAIN,yacd.haishan.me,DIRECT
+  - RULE-SET,private,DIRECT
+  - RULE-SET,reject,REJECT
+  - RULE-SET,icloud,DIRECT
+  - RULE-SET,apple,DIRECT
+  - RULE-SET,google,Proxy
+  - RULE-SET,proxy,Proxy
+  - RULE-SET,direct,DIRECT
+  - RULE-SET,lancidr,DIRECT
+  - RULE-SET,cncidr,DIRECT
+  - RULE-SET,telegramcidr,Proxy
+  - GEOIP,LAN,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,Proxy
