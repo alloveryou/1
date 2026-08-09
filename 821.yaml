@@ -157,25 +157,21 @@ proxies:
 
 
 - name: "🇺🇸1"
-  type: wireguard
-  #server: 188.114.96.188
-  server: 188.114.98.21
-  #server: 2001:67c:2960:6464::bc72:6215
-  #server: 2602:fc59:b0:64::bc72:62b5
-  #server: 2602:fc59:11:64::bc72:62b5
-  #server: 2606:4700:103::2
-  #server: 2606:4700:d1:0:f4:a2cc:d29a:1b74
-  #server: 162.159.193.77
-  #server: 2606:4700:d1::a29f:c001
- # server: 146.56.149.205
-  port: 4443  #3854 #864 #1843 #1002 #1701 #878
-  ip: 172.16.0.2
-  ipv6: 2606:4700:110:8498:ef50:da7d:a06f:d096
-  public-key: bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=
-  #    pre-shared-key: 31aIhAPwktDGpH4JDhA8GNvjFXEf/a6+UaQRyOAiyfM=
-  private-key: iKV47Laq5G53ZEwj2ooMgqylL1pSO8fNqvO7PnCbG2Q=
-  udp: true
-  reserved: "fI8p"
+  type: trojan
+  #server: usa.visa.com
+  #server: 2606:4700:0:5e08:9b33:360b:6020:2dba
+  #server: 2606:4700:0:daff:8d19:e133:9e20:8f2a
+  #server: 2606:4700:0:f846:b8b6:38f1:57aa:efad
+  server: 2606:4700:10:9ea0:8e3b:59bb:c8a7:9fed
+  port: 443
+  password: 56379726-c4cf-40f8-9194-e8af8dfe77dc
+  udp: false
+  sni: f4.alloveryou1314.qzz.io
+  network: ws
+  ws-opts:
+    path: "/proxyip=ProxyIP.Vultr.CMLiussss.net:443"
+    headers:
+      Host: f4.alloveryou1314.qzz.io    
   
 #- name: "🇺🇸2"
  # type: vless
@@ -282,21 +278,21 @@ proxies:
 
 
 - name: "🇺🇸L"
-  type: wireguard
-  #server: 188.114.99.221
-  server: 2001:67c:2960:6464::bc72:63dd
-  #server: 2001:67c:2960:6464::a29f:c0a9
-  #server: 162.159.192.194
-  #server: 2001:67c:2b0:db32:0:1:a29f:c103
-  #server: 2606:4700:d1:0:407a:a9cd:1e3b:8d65
-  port: 7559 #2506 #3581 #7152 #1387 #1002 #1701 #878
-  ip: 172.16.0.2
-  ipv6: 2606:4700:110:89d9:f82b:3868:9ef9:dc99
-  public-key: bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=
-  #    pre-shared-key: 31aIhAPwktDGpH4JDhA8GNvjFXEf/a6+UaQRyOAiyfM=
-  private-key: uNoywk60TsqAwyH83RqkXtsGwgGDQVVKWSMTfgDhoHg=
-  udp: true
- # reserved: "82,199,77"
+  type: trojan
+  #server: usa.visa.com
+  #server: 2606:4700:0:5e08:9b33:360b:6020:2dba
+  #server: 2606:4700:0:daff:8d19:e133:9e20:8f2a
+  #server: 2606:4700:0:f846:b8b6:38f1:57aa:efad
+  server: 2606:4700:10:9ea0:8e3b:59bb:c8a7:9fed
+  port: 443
+  password: 56379726-c4cf-40f8-9194-e8af8dfe77dc
+  udp: false
+  sni: f4.alloveryou1314.qzz.io
+  network: ws
+  ws-opts:
+    path: "/proxyip=ProxyIP.Vultr.CMLiussss.net:443"
+    headers:
+      Host: f4.alloveryou1314.qzz.io    
 
 
 #- name: "🇯🇵"
