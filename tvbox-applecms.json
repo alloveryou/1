@@ -1,1 +1,98 @@
-{"ads":[],"flags":[],"ijk":[],"lives":[],"parses":[],"rules":[],"sites":[{"api":"https://bfzyapi.com/api.php/provide/vod/","filterable":1,"key":"bfzy","name":"暴风资源","quickSearch":1,"searchable":1,"type":1}]}
+{
+  "sites": [
+    {
+      "key": "ffzy",
+      "name": "非凡资源",
+      "type": 1,
+      "api": "https://api.ffzyapi.com/api.php/provide/vod/",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1
+    },
+    {
+      "key": "lzi",
+      "name": "量子资源",
+      "type": 1,
+      "api": "https://cj.lziapi.com/api.php/provide/vod/",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1
+    },
+    {
+      "key": "dyttzy",
+      "name": "电影天堂资源",
+      "type": 1,
+      "api": "https://caiji.dyttzyapi.com/api.php/provide/vod/",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1
+    },
+    {
+      "key": "guangsu",
+      "name": "光速资源",
+      "type": 1,
+      "api": "https://api.guangsuapi.com/api.php/provide/vod/",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1
+    },
+    {
+      "key": "subo",
+      "name": "素博资源",
+      "type": 1,
+      "api": "https://subocaiji.com/api.php/provide/vod/",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1
+    },
+    {
+      "key": "jszy",
+      "name": "极速资源",
+      "type": 1,
+      "api": "https://jszyapi.com/api.php/provide/vod/",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1
+    },
+    {
+      "key": "bdzy",
+      "name": "百度资源",
+      "type": 1,
+      "api": "https://api.apibdzy.com/api.php/provide/vod/",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1
+    },
+    {
+      "key": "bfzy",
+      "name": "暴风资源",
+      "type": 1,
+      "api": "https://bfzyapi.com/api.php/provide/vod/",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1
+    },
+    {
+      "key": "yinghua",
+      "name": "樱花资源",
+      "type": 1,
+      "api": "https://m3u8.apiyhzy.com/api.php/provide/vod/",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1
+    }
+  ],
+  "parses": [
+    {
+      "name": "默认解析",
+      "type": 0,
+      "url": "https://jx.xmflv.com/?url="
+    },
+    {
+      "name": "备用解析1",
+      "type": 0,
+      "url": "https://jx.playerjy.com/?url="
+    }
+  ],
+  "flags": ["youku", "qq", "iqiyi", "qiyi", "letv", "sohu", "tudou", "pptv", "mgtv", "wasu", "bilibili", "imgo"]
+}
